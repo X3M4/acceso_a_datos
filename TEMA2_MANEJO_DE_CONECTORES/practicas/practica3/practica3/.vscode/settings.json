@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "/home/chema/Documentos/CFGS-DAM-SEGUNDO/ACCESO_A_DATOS/TEMA2_MANEJO_DE_CONECTORES/practicas/practica2/pracica2/src/main/resources/mariadb-java-client-3.2.0.jar"
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
