@@ -73,22 +73,19 @@ public class Main {
                 ps.setString(2, "Episode VII");
                 ps.setString(3, "The Force Awakens");
 
+                ps.executeQuery();
+
                 ps.setInt(1, 8);
                 ps.setString(2, "Episode VIII");
                 ps.setString(3, "The Last Jedi");
+
+                ps.executeQuery();
 
                 ps.setInt(1, 9);
                 ps.setString(2, "Episode IX");
                 ps.setString(3, "The Rise of Skywalker");
 
                 ps.executeQuery();
-
-                int exito = ps.executeUpdate();
-                if(exito > 0){
-                    System.out.println("Conexión exitosa");
-                }else{
-                    System.out.println("Error en la inserción de filas");
-                }
                 
             }catch(Exception e){
                 e.printStackTrace();
