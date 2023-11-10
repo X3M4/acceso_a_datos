@@ -135,7 +135,7 @@ public class Main {
             e.printStackTrace();
         }
     }
-
+    //CON ESTA FUNCION SE AÑADEN LAS CLAVES PRIMARIAS
     public static void modificaPK(String database, String nombreTabla, String nombreColumna) throws SQLException {
         String url = "jdbc:mariadb://localhost:3306/" + database;
 
@@ -152,14 +152,9 @@ public class Main {
         System.out.println("Clave primaria añadida");
 
     }
-
-    public static String sumaFK(ResultSet forKey) throws SQLException {
-        String claveForanea = "";
-        while (forKey.next()) {
-            claveForanea = String.format(",foreign key (%s) references %s(%s),", forKey.getString("FKCOLUMN_NAME"),
-                    forKey.getString("PKTABLE_NAME"), forKey.getString("PKCOLUMN_NAME"));
-        }
-        return claveForanea;
+    //EN ESTE MÉTODO DEBERÍA MODIFICAR CLAVES FORÁNEAS PERO NO ME DA TIEMPO
+    public static void modificaFK(ResultSet forKey) throws SQLException {
+        
     }
 
     public static boolean existeTabla(String nombre, ResultSetMetaData tablas) throws SQLException {
@@ -175,16 +170,4 @@ public class Main {
         return existeTabla;
     }
 
-    public static void imprimeDatos(ResultSetMetaData rsmdt) {
-        try {
-            int num = rsmdt.getColumnCount();
-            for (int i = 1; i <= num; i++) {
-                System.out.println(rsmdt.getColumnName(i));
-
-            }
-            System.out.println("\n");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }
