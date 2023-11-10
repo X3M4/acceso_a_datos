@@ -5,7 +5,7 @@ import java.sql.*;
 public class Main {
     public static void main(String[] args) {
         try{
-            String url = "jdbc:sqlite:practica1/src/main/resources/veterinaria";
+            String url = "jdbc:sqlite:src/main/resources/veterinaria";
             Connection con = DriverManager.getConnection(url);
             DatabaseMetaData met = con.getMetaData();
             ResultSet rs = met.getTables(null, "midb", null, null);
