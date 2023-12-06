@@ -125,8 +125,8 @@ public class Main {
             }
 
             // AHORA UNA NUEVA CONSULTA PARA AÑADIR LOS PERSONAJES
-            String consultaAddPersonaje = "INSERT INTO characters (id, name, height, mass, hair_color, skin_color, eye_color, "
-                    + "birth_year, gender, planet_id, created_date, updated_date, url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
+            String consultaAddPersonaje = "INSERT I(id, name, height, mass, hair_color, skin_color, eye_color, "
+                    + "birth_year, gender, planet_id, created_date, updated_date, url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"NTO characters ; 
 
             String consultaPersonajesPelis = "INSERT INTO character_films (id_character, id_film) VALUES (?, ?)";
 
