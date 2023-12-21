@@ -16,13 +16,13 @@ public class Practica3BDOO {
 
         ODB odb = ODBFactory.open("practica_LOTR");
         // MÉTODOS PARA RELLENAR TABLAS
-        // tablaRealms(odb);
-        // tablaCharacters(odb);
-        // tablaMarriage(odb);
-        tablaBooks(odb);
-        // tablaChapter(odb);
+        //tablaRealms(odb);
+        //tablaCharacters(odb);
+        //tablaMarriage(odb);
+        //tablaBooks(odb);
+        //tablaChapter(odb);
         //tablaMovies(odb);
-        // tablaBooksMovies(odb);
+        //tablaBooksMovies(odb);
 
         Objects<Book> libros = odb.getObjects(Book.class);
         Objects<Chapter> capitulos = odb.getObjects(Chapter.class);
@@ -45,9 +45,6 @@ public class Practica3BDOO {
          * }
          */
 
-        
-        
-        
 
         /*
          * while(capitulos.hasNext()){

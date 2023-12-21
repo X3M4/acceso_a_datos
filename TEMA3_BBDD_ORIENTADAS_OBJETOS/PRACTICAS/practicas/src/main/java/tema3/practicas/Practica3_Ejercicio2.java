@@ -13,11 +13,11 @@ public class Practica3_Ejercicio2 {
 
     public static void main(String[] args) {
         ODB odb = ODBFactory.open("practica_LOTR");
-        // cuantosCasados(odb);
-        // cuantosBaggings(odb);
-        // infoPelisPresupRottenTomatoes(odb);
-        // infoValinorRealm(odb);
-        // infoValinorCharacter(odb);
+        //cuantosCasados(odb);
+        //cuantosBaggings(odb);
+        //infoPelisPresupRottenTomatoes(odb);
+        //infoValinorRealm(odb);
+        //infoValinorCharacter(odb);
         peliculasElHobbit(odb);
     }
 
@@ -130,7 +130,7 @@ public class Practica3_Ejercicio2 {
             Character c = personajes.next();
             RecuperaRealm reino = new RecuperaRealm();
             Realm reinoRecup = reino.recuperar(c.getRealm());
-            if (reinoRecup.getName().contains("Valinor")) {
+            if (reinoRecup != null && reinoRecup.getName().contains("Valinor")) {
                 setReinos.add(reinoRecup);
             }
         }
