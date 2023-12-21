@@ -17,12 +17,14 @@ public class Practica3BDOO {
         ODB odb = ODBFactory.open("practica_LOTR");
         // MÉTODOS PARA RELLENAR TABLAS
         //tablaRealms(odb);
-        //tablaCharacters(odb);
-        //tablaMarriage(odb);
-        //tablaBooks(odb);
-        //tablaChapter(odb);
-        //tablaMovies(odb);
-        //tablaBooksMovies(odb);
+        // tablaCharacters(odb);
+        // tablaMarriage(odb);
+        // tablaBooks(odb);
+        // tablaChapter(odb);
+        // tablaMovies(odb);
+        // tablaBooksMovies(odb);
+        tablaDialogs(odb);
+        odb.close();
 
         Objects<Book> libros = odb.getObjects(Book.class);
         Objects<Chapter> capitulos = odb.getObjects(Chapter.class);
@@ -45,7 +47,6 @@ public class Practica3BDOO {
          * }
          */
 
-
         /*
          * while(capitulos.hasNext()){
          * Chapter r = capitulos.next();
@@ -53,11 +54,12 @@ public class Practica3BDOO {
          * }
          */
 
-        
-        /*while (peliculas.hasNext()) {
-            Movie m = peliculas.next();
-            System.out.println(m);
-        }*/
+        /*
+         * while (peliculas.hasNext()) {
+         * Movie m = peliculas.next();
+         * System.out.println(m);
+         * }
+         */
 
     }
 
@@ -361,6 +363,44 @@ public class Practica3BDOO {
             // TODO: handle exception
             e.printStackTrace();
 
+        }
+    }
+
+    // MÉTODO PARA AÑADIR DIALOGS
+    public static void tablaDialogs(ODB bdoo) {
+        String url = "jdbc:mariadb://localhost:3306/lotr";
+        try {
+            Connection con = DriverManager.getConnection(url, "star", "wars");
+            String consulta = "SELECT * FROM dialogs";
+            PreparedStatement ps = con.prepareStatement(consulta);
+            ResultSet rs = ps.executeQuery();
+            Objects<Movie> peliculas = bdoo.getObjects(Movie.class);
+
+            while (rs.next()) {
+                Dialog dialogo = new Dialog(parseaIntHexadecimal(rs.getString("id")), rs.getString("dialog"),
+                        parseaIntHexadecimal(rs.getString("id_movie")),
+                        parseaIntHexadecimal(rs.getString("id_Character")));
+
+                bdoo.store(dialogo);
+
+                while (peliculas.hasNext()) {
+                    Movie m = peliculas.next();
+                    if (m != null) {
+                        if (m.getId() == dialogo.getId_movie()) {
+                            m.addDialog(dialogo);
+                            bdoo.store(m);
+                            bdoo.commit();
+                            System.out.println(
+                                    String.format("Añadido diálogo %d a %s", dialogo.getId(), m.getName()));
+                        }
+                    }
+                }
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
         }
     }
 

@@ -118,6 +118,13 @@ public class Movie {
 		
 	}
 
+	public void addDialog(Dialog dialog) {
+		if(this.dialog == null){
+			this.dialog = new HashSet<Dialog>();
+		}
+		this.dialog.add(dialog);
+	}
+
 	@Override
 	public String toString() {
 		
