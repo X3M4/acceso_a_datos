@@ -1,5 +1,6 @@
 package tema3.practicas;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Movie {
@@ -109,8 +110,25 @@ public class Movie {
 		this.dialog = dialog;
 	}
 
+	public void addBook(Book book) {
+		if(this.book == null){
+			this.book = new HashSet<Book>();
+		}
+		this.book.add(book);
+		
+	}
+
 	@Override
 	public String toString() {
+		
+		StringBuilder sbbook = new StringBuilder();
+		
+		if(this.book != null){
+			for(Book book : this.book){
+				sbbook.append(book).append(" ");
+			}
+		}
+
 		return "Movie [id=" + id + ", name=" + name + ", runtimeInMinutes=" + runtimeInMinutes + ", budgetInMillions="
 				+ budgetInMillions + ", boxOfficeRevenueInMillions=" + boxOfficeRevenueInMillions
 				+ ", academyAwardNominations=" + academyAwardNominations + ", academyAwardWins=" + academyAwardWins

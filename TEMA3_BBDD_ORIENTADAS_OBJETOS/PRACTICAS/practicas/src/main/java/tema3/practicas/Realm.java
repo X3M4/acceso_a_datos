@@ -1,5 +1,6 @@
 package tema3.practicas;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Realm {
@@ -10,12 +11,12 @@ public class Realm {
 	private Set<Character> character;
 
 	//Getters y Setters generados automáticamente
-	public Realm(int id, String name, int population, int area, Set<Character> character) {
+	public Realm(int id, String name, int population, int area) {
 		this.id = id;
 		this.name = name;
 		this.population = population;
 		this.area = area;
-		this.character = character;
+		this.character = new HashSet<Character>();
 	}
 	//Getters y Setters generados automáticamente
 	public int getId() {
@@ -45,14 +46,22 @@ public class Realm {
 	public Set<Character> getCharacter() {
 		return character;
 	}
-	public void setCharacter(Set<Character> character) {
+	public void setCharater(Set<Character> character) {
 		this.character = character;
+	}
+
+	public void addCharacter(Character ch) {
+		if(this.character == null){
+			this.character = new HashSet<>();
+		}
+		this.character.add(ch);
+		
 	}
 	
 	@Override
 	public String toString() {
 		return "Realm [id=" + id + ", name=" + name + ", population=" + population + ", area=" + area + ", character="
-				+ character + "]";
+				+ character + "]\n";
 	}
 	
 	

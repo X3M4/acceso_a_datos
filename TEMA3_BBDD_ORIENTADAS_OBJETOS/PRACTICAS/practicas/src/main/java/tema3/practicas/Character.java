@@ -11,10 +11,9 @@ public class Character {
 	private String hair;
 	private String height;
 	private int realm;
-	private int id_spouse1;
-	private int id_spouse2;
-	
-	//Constructor
+	private Character id_spouse;
+
+	// Constructor
 	public Character(int id, String name, String wikiUrl, String race, String birth, String gender, String death,
 			String hair, String height, int realm) {
 		super();
@@ -30,7 +29,7 @@ public class Character {
 		this.realm = realm;
 	}
 
-	//Getters y Setters automáticos
+	// Getters y Setters automáticos
 	public int getId() {
 		return id;
 	}
@@ -40,7 +39,8 @@ public class Character {
 	}
 
 	public String getName() {
-		return name;
+		if(this.name != null) return this.name;
+		else return "null";
 	}
 
 	public void setName(String name) {
@@ -111,12 +111,19 @@ public class Character {
 		this.realm = realm;
 	}
 
+	public Character getSpouse() {
+		return id_spouse;
+	}
+
+	public void setSpouse(Character id_spouse) {
+		this.id_spouse = id_spouse;
+	}
+
 	@Override
 	public String toString() {
 		return "Character [id=" + id + ", name=" + name + ", wikiUrl=" + wikiUrl + ", race=" + race + ", birth=" + birth
 				+ ", gender=" + gender + ", death=" + death + ", hair=" + hair + ", height=" + height + ", realm="
-				+ realm + ", id_spouse1=" + id_spouse1 + ", id_spouse2=" + id_spouse2 + "]";
+				+ realm + ", spouse=" + (id_spouse != null ? id_spouse.getName() : "null") + "]";
 	}
-	
-	
+
 }

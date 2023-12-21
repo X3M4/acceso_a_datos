@@ -10,16 +10,16 @@ public class PracticaBDOO {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ODB odb = ODBFactory.open("practica_LOTR");
-        Book prueba = new Book(0, "Peli de prueba", null);
+        Book prueba = new Book(0, "Peli de prueba");
 		Chapter chapter = new Chapter(0, "Capítulo de Prueba", 0);
 		Character character = new Character(0, "Personaje de prueba", null, null, null, null, 
 										null, null, null, 0);
 		Dialog dialog = new Dialog(0, "Diálogo de prueba", 0, 0);
 		Movie movie = new Movie(0, "Peli de prueba", 180, 230,	 0, 
 										0, 0, 0);
-		Realm realm = new Realm(0, "Reino de prueba", 0, 0, null);
+		Realm realm = new Realm(0, "Reino de prueba", 0, 0);
 
-        odb.store(prueba);
+        /*odb.store(prueba);
 		odb.store(chapter);
 		odb.store(character);
 		odb.store(dialog);
@@ -33,12 +33,17 @@ public class PracticaBDOO {
 	   Objects<Dialog> dialogos = odb.getObjects(Dialog.class);
 	   Objects<Movie> peliculas = odb.getObjects(Movie.class);
 	   Objects<Realm> reinos = odb.getObjects(Realm.class);
+		
+		while(reinos.hasNext()) {
+			Realm r = reinos.next();
+			System.out.println(r);
+		}
 
-	   while(libros.hasNext()){
-		Book l = libros.next();
-		System.out.println(l);
-	   }
-
+	   	/*while(personajes.hasNext()){
+		Character r = personajes.next();
+		System.out.println(r.getSpouse());
+	   }*/
+	   
 	}
 
 }
