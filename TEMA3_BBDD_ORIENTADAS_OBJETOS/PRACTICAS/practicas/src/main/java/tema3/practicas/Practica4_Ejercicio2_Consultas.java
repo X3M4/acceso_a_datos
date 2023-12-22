@@ -81,11 +81,5 @@ public class Practica4_Ejercicio2_Consultas {
             e.printStackTrace();
         }
     }
-    
-    public static int devuelveCount(ODB odb, ICriterion criterio){
-        Values valoresPeli = odb.getValues(new ValuesCriteriaQuery(Movie.class, criterio).count("name"));
-        ObjectValues valores = valoresPeli.next();
-        BigDecimal count = (BigDecimal)valores.getByAlias("name");
-        return count.intValue();
-    }
+
 }
