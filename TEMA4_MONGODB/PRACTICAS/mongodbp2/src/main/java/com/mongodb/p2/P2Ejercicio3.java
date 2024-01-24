@@ -32,6 +32,7 @@ captura de pantalla de Compass.
             
             //Recupero el personaje Avalanche
             Document personaje = collection.find(eq("name", "Avalanche")).first();
+            System.out.println(personaje.toString());
             //Cambio el nombre de Avalanche por el mío
             personaje.put("name", "Chema Fernández");
             //Cambio _id para que no se duplique
