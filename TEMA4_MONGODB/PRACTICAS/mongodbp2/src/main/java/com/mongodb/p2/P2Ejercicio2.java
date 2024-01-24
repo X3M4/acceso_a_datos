@@ -31,6 +31,8 @@ public class P2Ejercicio2 {
                 System.out.println(document.getString("title"));
             }
 
+            System.out.println("Se han recuperado: " + consulta.size() + " eventos");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
