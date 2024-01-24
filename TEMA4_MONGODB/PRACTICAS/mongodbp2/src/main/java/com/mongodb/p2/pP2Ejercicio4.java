@@ -1,6 +1,8 @@
 package com.mongodb.p2;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.bson.Document;
@@ -34,8 +36,10 @@ public class pP2Ejercicio4 {
             for(Document doc: consulta){
                 String nombre = doc.getString("name");
                 List<String> lista = getNumberComics(doc);
+                
 
                 if(lista != null){
+                    lista = lista.subList(0, Math.min(lista.size(), 20));
                     System.out.println(nombre);
                     for(String s: lista){
                         System.out.println("\t-----" + s);
@@ -54,14 +58,23 @@ public class pP2Ejercicio4 {
     public static List<String> getNumberComics(Document doc){
         Document comics = doc.get("comics", Document.class);
         int numero = comics.getInteger("available", 0);
+       
+        String modificacion = doc.getString("modified");
+        
+        String[] modificaciones = modificacion.split("-");
+        int year = Integer.parseInt(modificaciones[0]);
 
-        if(numero > 50) {
+        if(numero > 50 && year > 2000) {
 
             return getComicList(doc.getString("name"));
         }
         else return null;
     }
 
+    /*
+     * LO HAGO DE ESTA MANERA PORQUE A LA DESCRIPCIÓN SOLAMENTE SE PUEDE ACCEDER DESDE LA COLECCIÓN COMICS
+     * DESDE CHARACTER SOLAMENTE ESTÁ EL NOMBRE DEL COMIC.
+     */
     public static List<String> getComicList(String comics){
         List<String> listaTitulosDesc = new ArrayList<String>();
 
@@ -87,9 +100,8 @@ public class pP2Ejercicio4 {
                 //Se recorre la lista de items y si el nombre del personaje en el item coincide con el dado a la función
                 for(Document item: listaPersonajesComic){
                     String nombrePersonajeComic = item.getString("name");
-                    /////System.out.println(nombrePersonajeComic + " --- " + comics);
 
-                    //Se mete en la lista de String el nombre y la dfescripción
+                    //Se mete en la lista de String el nombre y la descripción
                     if(nombrePersonajeComic.equals(comics)){
                         listaTitulosDesc.add(doc.getString("title").toUpperCase() + "-->" + doc.getString("description")+"\n");
                     }
